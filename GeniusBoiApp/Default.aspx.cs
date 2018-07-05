@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using GeniusBoiApp.Models;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Data;
 
 namespace GeniusBoiApp
 {
@@ -15,9 +16,6 @@ namespace GeniusBoiApp
         SqlConnection myConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            //GenerateTable(numOfColumns, numOfRows);
-
 
             if (IsPostBack)
                 lblWelcome.Text = "You've posted back";
@@ -36,7 +34,6 @@ namespace GeniusBoiApp
             skills.skillHoursLearn = int.Parse(txtSkillHoursLearn.Text);
             skills.skillHoursSpent = int.Parse(txtSkillHoursSpent.Text);            
             person.Skills = new List<Skill>();
-            //Session["test"] = person.Skills;
             person.Skills.Add(skills);
 
             myConnection.Open();
@@ -47,8 +44,6 @@ namespace GeniusBoiApp
             insertCommand.Parameters.AddWithValue("@sHLearn", skills.skillHoursLearn);
             insertCommand.Parameters.AddWithValue("@sHSpent", skills.skillHoursSpent);
             insertCommand.ExecuteNonQuery();
-            //dataGridView.DataSource = null;
-            //this.GridView1TableAdapter.Update(this.SqlDataSource1);
             myConnection.Close();
             GridView1.DataBind();
 
@@ -56,8 +51,15 @@ namespace GeniusBoiApp
 
         protected void btnRetrieve_Click(object sender, EventArgs e)
         {
-            //tblPerson = (Table)Session["test"];
-            //GridView1.DataBind();
+            //DataTable dt = new DataTable();
+            //myConnection.Open();
+            //string query = "SELECT sName from Table WHERE pName = @pName";
+            //SqlCommand sqlCmd = new SqlCommand(query, myConnection);
+            //SqlDataAdapter sqlDa = new SqlDataAdapter(sqlCmd);
+
+            //sqlCmd.Parameters.AddWithValue("@pname", DropDownList1.SelectedValue);
+            //sqlDa.Fill(dt);
+            //myConnection.Close();
         }
 
         protected void Menu1_MenuItemClick(object sender, MenuEventArgs e)
