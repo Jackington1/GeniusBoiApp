@@ -47,16 +47,23 @@ namespace GeniusBoiApp
             insertCommand.Parameters.AddWithValue("@sHLearn", skills.skillHoursLearn);
             insertCommand.Parameters.AddWithValue("@sHSpent", skills.skillHoursSpent);
             insertCommand.ExecuteNonQuery();
-
-            BindingSource
+            //dataGridView.DataSource = null;
+            //this.GridView1TableAdapter.Update(this.SqlDataSource1);
             myConnection.Close();
+            GridView1.DataBind();
 
-            
         }
 
         protected void btnRetrieve_Click(object sender, EventArgs e)
         {
             //tblPerson = (Table)Session["test"];
+            //GridView1.DataBind();
+        }
+
+        protected void Menu1_MenuItemClick(object sender, MenuEventArgs e)
+        {
+            var index = Int32.Parse(e.Item.Value);
+            MultiView1.ActiveViewIndex = index;
         }
     }
 }
