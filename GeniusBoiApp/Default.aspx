@@ -5,11 +5,12 @@
     <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
     <div class="jumbotron">
-        <h1>SKILLZ BOI</h1>
+        <h1>JAR Skills App</h1>
+        <p class="lead">
         <a href="http://hemansings.com">
-            <asp:Image runat="server" src="Images/skills.jpg" ImageUrl="hemansings.com" Style="width: 120px; height: 62px; margin-right: 0px" />
+            <asp:Image runat="server" src="Images/skills.jpg" ImageUrl="hemansings.com" Style="margin-right: 0px" Height="16px" Width="37px" />
         </a>
-        <p class="lead">Add some Skillz.</p>
+            Add some Skills.</p>
         <asp:Label runat="server" ID="lblWelcome"></asp:Label>
         <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
     </div>
@@ -63,7 +64,7 @@
             </asp:View>
             <asp:View ID="Tab2" runat="server">
 
-                <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource2" DataTextField="pName" DataValueField="pName">
+                <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource2" DataTextField="pName" DataValueField="pName" OnSelectedIndexChanged ="DropDownList1_SelectedIndexChanged">
                 </asp:DropDownList>
                 <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [pName] FROM [Table]"></asp:SqlDataSource>
                 <asp:Button ID="btnGetSkills" runat="server" Text="Retrieve" OnClick="btnRetrieve_Click" /><br />
